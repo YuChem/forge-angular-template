@@ -1,0 +1,4 @@
+Add .npmrc file in root
+Do npm i @eureka/auth-intercept-lib
+use CustomHttpClient from auth-intercept-lib intead of HttpClient
+Register CustomHttpClient in providers of app module or main.ts

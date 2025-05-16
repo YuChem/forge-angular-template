@@ -1,18 +1,25 @@
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-
+import { environment } from './environments/environment';
+import { AssetsListComponent } from './app/assets-list.component';
+import { CustomHttpClient } from '@eureka/auth-intercept-lib';
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [AssetsListComponent],
   template: `
     <h1>Hello from {{ name }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
+    <app-assets-list></app-assets-list>
   `,
 })
 export class App {
   name = 'Angular';
+  tenantApiUrl = environment.tenantApiUrl;
+  tenantId = environment.tenantId;
 }
 
-bootstrapApplication(App);
+bootstrapApplication(App, {
+  providers: [CustomHttpClient]
+});
+
+
